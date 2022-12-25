@@ -24,7 +24,7 @@ node* CreateNode(int val)
 Graph* CreateGraph()
 {
 	Graph* graph = malloc(sizeof(Graph));
-	scanf_s("%d", &graph->edges);
+	scanf("%d", &graph->edges);
 	for (int i = 0; i < VERTICES; ++i)
 	{
 		graph->adjacency_list[i] = NULL;
@@ -32,8 +32,8 @@ Graph* CreateGraph()
 	int va, vb;
 	for (int i = 0; i < graph->edges; ++i)
 	{
-		scanf_s("%d", &va);
-		scanf_s("%d", &vb);
+		scanf("%d", &va);
+		scanf("%d", &vb);
 		if (graph->adjacency_list[va] == NULL)
 		{
 			graph->adjacency_list[va] = CreateNode(vb);
