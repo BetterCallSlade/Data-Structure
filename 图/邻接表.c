@@ -6,14 +6,13 @@ typedef struct node {
 	struct node* next;
 } node;
 
-#define VERTICES 5
-
 typedef struct {
+	#define VERTICES 5
 	int edges;
 	node* adjacency_list[VERTICES];
 } Graph;
 
-node* CreateNode(int val)
+node* create_node(int val)
 {
 	node* new_node = malloc(sizeof(node));
 	new_node->val = val;
@@ -21,11 +20,11 @@ node* CreateNode(int val)
 	return new_node;
 }
 
-Graph* CreateGraph()
+Graph* create_undirected_unweighted_graph()
 {
 	Graph* graph = malloc(sizeof(Graph));
 	scanf("%d", &graph->edges);
-	for (int i = 0; i < VERTICES; ++i)
+	for (int i = 0; i < VERTICES; i++)
 	{
 		graph->adjacency_list[i] = NULL;
 	}
@@ -36,7 +35,7 @@ Graph* CreateGraph()
 		scanf("%d", &vb);
 		if (graph->adjacency_list[va] == NULL)
 		{
-			graph->adjacency_list[va] = CreateNode(vb);
+			graph->adjacency_list[va] = create_node(vb);
 		}
 		else
 		{
@@ -45,11 +44,11 @@ Graph* CreateGraph()
 			{
 				node = node->next;
 			}
-			node->next = CreateNode(vb);
+			node->next = create_node(vb);
 		}
 		if (graph->adjacency_list[vb] == NULL)
 		{
-			graph->adjacency_list[vb] = CreateNode(va);
+			graph->adjacency_list[vb] = create_node(va);
 		}
 		else
 		{
@@ -58,13 +57,13 @@ Graph* CreateGraph()
 			{
 				node = node->next;
 			}
-			node->next = CreateNode(va);
+			node->next = create_node(va);
 		}
 	}
 	return graph;
 }
 
-void PrintGraph(Graph* graph)
+void print_graph(Graph* graph)
 {
 	for (int i = 0; i < VERTICES; ++i)
 	{
@@ -80,6 +79,6 @@ void PrintGraph(Graph* graph)
 
 int main()
 {
-	Graph* graph = CreateGraph();
-	PrintGraph(graph);
+	Graph* graph = create_undirected_unweighted_graph();
+	print_graph(graph);
 }
