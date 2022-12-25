@@ -28,13 +28,15 @@ Graph* create_undirected_unweighted_graph()
 	return graph;
 }
 
+#define MaxInt 32767
+
 // 创建无向有权图
 Graph* create_undirected_weighted_graph()
 {
 	Graph* graph = malloc(sizeof(Graph));
 	for (int i = 0; i < VERTICES; i++) {
 		for (int j = 0; j < VERTICES; j++) {
-			graph->adjacency_matrix[i][j] = 0;
+			graph->adjacency_matrix[i][j] = MaxInt;
 		}
 	}
 	scanf("%d", &graph->edges);
